@@ -11,7 +11,10 @@
         <%= f.label :email, class: 'form-label' %><br />
         <%= f.email_field :email, autofocus: true, autocomplete: "email", class: 'form-control' %>
       </div>
-
+      <div class="field">
+      <%= f.label :username, class: 'form-label' %><br />
+      <%= f.text_field :username, autofocus: true %>
+    </div>
       <div class="field">
         <%= f.label :password, class: 'form-label' %>
         <% if @minimum_password_length %>
@@ -19,12 +22,6 @@
         <% end %><br />
         <%= f.password_field :password, autocomplete: "new-password", class: 'form-control' %>
       </div>
-
-      <div class="field">
-        <%= f.label :password_confirmation, class: 'form-label' %><br />
-        <%= f.password_field :password_confirmation, autocomplete: "new-password", class: 'form-control' %>
-      </div>
-
       <div class="actions">
         <%= f.submit "Sign up" %>
       </div>
