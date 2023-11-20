@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-    before_action :set_user, only: [:show, :update, :destroy]
+    #before_action :configure_permitted_parameters, if: :devise_controller?
 
 
 
@@ -7,10 +7,9 @@ class UsersController < ApplicationController
 
   # GET /users
     def index
-      @users = User.all
     end
 
-    
+
   # GET /users/1
     def show
       render json: @user
