@@ -1,5 +1,5 @@
 <nav class="navbar navbar-expand-md navbar-dark bg-primary fixed-top">
-  <a class="navbar-brand" href="#">chq.to</a>
+<a class="navbar-brand" href="<%= root_path %>">chq.to</a>
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
   </button>
@@ -7,12 +7,23 @@
   <div class="collapse navbar-collapse" id="navbarNav">
     <ul class="navbar-nav ml-auto">
       <!-- Otros elementos de navegación pueden ir aquí -->
+   
+      <% if !user_signed_in? %>
+          <li class="nav-item">
+  					<%= link_to 'Sign up', new_user_registration_path, class: "nav-link"%>
+          </li>
 
-      <% if user_signed_in? %>
+          <li class="nav-item">
+  					<%= link_to 'Log in', new_user_session_path, class: "nav-link"%>
+          </li>
+
+      <% else %>
+      <%= link_to "Mi Perfil", user_path(current_user), class: 'btn btn-outline-light' %>
         <li class="nav-item">
           <%= button_to "Cerrar Sesión", destroy_user_session_path, method: :delete, class: 'btn btn-outline-light' %>
         </li>
       <% end %>
+  
     </ul>
   </div>
 </nav>
