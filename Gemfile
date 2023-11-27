@@ -3,6 +3,10 @@ source "https://rubygems.org"
 ruby "3.2.2"
 # Gemfile
 gem 'bootstrap', '~> 5.1.3'
+gem 'attr_encrypted'
+gem 'bcrypt', '~> 3.1.7'
+
+gem 'cancancan', '~> 3.4'
 
 gem "devise", "~> 4.8.0"
 # Bundle edge Rails instead: gem "rails", github: "rails/rails", branch: "main"

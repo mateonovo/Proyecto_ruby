@@ -1,8 +1,7 @@
-<%= form_with(model: link) do |form| %>
+<%= form_with(model: link, local: true) do |form| %>
   <% if link.errors.any? %>
     <div style="color: red">
       <h2><%= pluralize(link.errors.count, "error") %> prohibited this link from being saved:</h2>
-
       <ul>
         <% link.errors.each do |error| %>
           <li><%= error.full_message %></li>
@@ -11,7 +10,52 @@
     </div>
   <% end %>
 
+  <!-- Common form fields -->
   <div>
-    <%= form.submit %>
+    <%= form.label :name %>
+    <%= form.text_field :name %>
   </div>
+
+  <div>
+    <%= form.label :link_category %>
+    <%= form.select :link_category, Link.link_categories.keys, {}, class: 'link-category-select' %>
+  </div>
+
+  <!-- Additional fields based on link type -->
+  <div id="temporary-fields" style="display: none;">
+    <div>
+      <%= form.label :expires_at %>
+      <%= form.datetime_local_field :expires_at %>
+
+    </div>
+  </div>
+
+  <div id="private-fields" style="display: none;">
+    <div>
+      <%= form.label :password %>
+      <%= form.password_field :password, autocomplete: "current-password" %>
+    </div>
+  </div>
+
+  <!-- Submit button -->
+  <div>
+    <%= form.submit link.persisted? ? "Update Link" : "Create Link", class: "btn btn-primary" %>
+  </div>
+
+  <script>
+ $(document).ready(function () {
+  var linkCategorySelect = $('.link-category-select');
+  var temporaryFields = $('#temporary-fields');
+  var privateFields = $('#private-fields');
+
+  linkCategorySelect.change(function () {
+    var selectedCategory = linkCategorySelect.val();
+    console.log('Selected Category:', selectedCategory);
+
+    temporaryFields.toggle(selectedCategory === 'temporary');
+    privateFields.toggle(selectedCategory === 'private_link');
+  });
+});
+
+  </script>
 <% end %>

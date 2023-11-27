@@ -19,6 +19,7 @@
 
       <% else %>
       <%= link_to "Mi Perfil", user_path(current_user), class: 'btn btn-outline-light' %>
+      <%= link_to "Links", links_path, class: 'btn btn-outline-light' %>
         <li class="nav-item">
           <%= button_to "Cerrar Sesión", destroy_user_session_path, method: :delete, class: 'btn btn-outline-light' %>
         </li>

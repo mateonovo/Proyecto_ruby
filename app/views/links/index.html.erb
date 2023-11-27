@@ -7,6 +7,9 @@
     <%= render link %>
     <p>
       <%= link_to "Show this link", link %>
+      <!-- Display the URL for the link -->
+      <%= "URL: #{link.unique_url}" %>
+      <%=  " category : #{link.link_category} "%>
     </p>
   <% end %>
 </div>
