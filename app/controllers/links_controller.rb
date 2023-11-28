@@ -9,8 +9,8 @@ class LinksController < ApplicationController
   # GET /links/1 or /links/1.json
   def show
     @link = Link.find(params[:id])
-    url_extention = @link.id.to_s(36)
-    @unique_url = "http://localhost:3000/#{url_extention}"
+    url_extention = @link.unique_url
+    @short = "http://localhost:3000/#{url_extention}"
   end
 
   # GET /links/new
@@ -59,12 +59,12 @@ class LinksController < ApplicationController
     end
   end
 
-# app/controllers/links_controller.rb
-
-# app/controllers/links_controller.rb
 
 def send_to_original_url
-  @link = Link.find_by(id: params[:unique_url].to_i(36))
+  @link = Link.find_by(slug: params[:slug])
+  
+  puts ("aaaaaaaaaaaaaaaaaaaaaaaaaa , #{@link.unique_url}")
+  puts ("aaaaaaaaaaaaaaaaaaaaaaaaaa , #{params}")
 
   if @link.present?
     case @link.link_category
@@ -84,7 +84,7 @@ def send_to_original_url
 end
 
 def authenticate_private_link
-  @link = Link.find_by(id: params[:unique_url].to_i(36))
+  @link = Link.find_by(slug: params[:slug])
 
   if @link.present? && @link.authenticate(params[:password])
     redirect_to @link.url, allow_other_host: true
