@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2023_11_27_164412) do
+ActiveRecord::Schema[7.1].define(version: 2023_11_27_182732) do
   create_table "links", force: :cascade do |t|
     t.string "name"
     t.string "slug"

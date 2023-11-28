@@ -5,7 +5,8 @@ class Link < ApplicationRecord
   validates :link_category, presence: true
   validates :expires_at, presence: false
   validates :unique_url, uniqueness: true
-  has_secure_password validations: true
+  validates :url, format: { with: URI.regexp }
+  has_secure_password validations: false
 
   enum link_category: { regular: 'regular', temporary: 'temporary', private_link: 'private_link', ephemeral: 'ephemeral' }
 

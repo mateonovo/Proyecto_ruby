@@ -66,20 +66,18 @@ class LinksController < ApplicationController
   # Only allow a list of trusted parameters through.
   def link_params
     if params[:link].present?
-      puts "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa #{params[:link][:password]}"
       permitted_params = case params[:link][:link_category]
                          when 'regular'
-                           [:name, :link_category]
+                           [:url,:name, :link_category]
                          when 'temporary'
-                           [:name, :link_category, :expires_at]
+                           [:url,:name, :link_category, :expires_at]
                          when 'private_link'
-                           [:name, :link_category, :password]
+                           [:url,:name, :link_category, :password]
                          when 'ephemeral'
-                           [:name, :link_category]
+                           [:url,:name, :link_category]
                          else
-                           [:name, :link_category]
+                           [:url,:name, :link_category]
                          end
-  
       params.require(:link).permit(permitted_params)
     end
   end  
