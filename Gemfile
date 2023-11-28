@@ -5,6 +5,7 @@ ruby "3.2.2"
 gem 'bootstrap', '~> 5.1.3'
 gem 'attr_encrypted'
 gem 'bcrypt', '~> 3.1.7'
+gem 'will_paginate', '~> 4.0'
 
 gem 'cancancan', '~> 3.4'
 

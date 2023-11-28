@@ -3,14 +3,15 @@ class LinksController < ApplicationController
 
   # GET /links or /links.json
   def index
-    @links = Link.all
+    @links = Link.paginate(page: params[:page], per_page: 1)
   end
+  
+  
 
   # GET /links/1 or /links/1.json
   def show
     @link = Link.find(params[:id])
-    url_extention = @link.unique_url
-    @short = "http://localhost:3000/#{url_extention}"
+    @short = "http://localhost:3000/#{@link.unique_url}"
   end
 
   # GET /links/new
