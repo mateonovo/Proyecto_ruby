@@ -19,4 +19,10 @@ class Link < ApplicationRecord
     self.slug ||= SecureRandom.hex(5)
     self.unique_url = "/l/#{slug}"
   end
+
+
+
 end
+
+
+  

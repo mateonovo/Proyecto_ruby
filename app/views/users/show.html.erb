@@ -1,10 +1,10 @@
 <!-- app/views/usuarios/show.html.erb -->
 
-<h1>Perfil de <%= @user.username %></h1>
+<h1><%= @user.username %>'s Profile </h1>
 
-<p>Nombre de usuario: <%= @user.username %></p>
+<p>Username <%= @user.username %></p>
 <p>Email: <%= @user.email %></p>
 
 
-<%= link_to "Eliminar mi cuenta", edit_user_registration_path %>
+<%= link_to "Delete my account", edit_user_registration_path %>
 
