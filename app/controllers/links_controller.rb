@@ -109,12 +109,14 @@ private
   end
   
   def redirect_ephemeral_link
-    if @link.single_use?
+    if !@link.single_use?
+      @link.update(single_use: true)
       redirect_to @link.url, allow_other_host: true
-    else 
+    else
       forbidden
-    end  
+    end
   end
+  
   
   def redirect_default_link
     redirect_to @link.url, allow_other_host: true
