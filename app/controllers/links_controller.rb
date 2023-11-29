@@ -1,9 +1,10 @@
 class LinksController < ApplicationController
   before_action :set_link, only: %i[show edit update destroy]
+  before_action :authenticate_user!, except: %i[send_to_original_url authenticate_private_link]
 
   # GET /links or /links.json
   def index
-    @links = Link.paginate(page: params[:page], per_page: 1)
+    @links = Link.paginate(page: params[:page], per_page: 4)
   end
   
   
@@ -103,18 +104,16 @@ private
     if @link.expires_at > Time.now
       redirect_to @link.url, allow_other_host: true
     else
-      flash[:alert] = 'Link expired'
-      redirect_to root_path
+      not_found
     end
   end
   
   def redirect_ephemeral_link
-    if @link.created_at + 5.minutes > Time.now
+    if @link.single_use?
       redirect_to @link.url, allow_other_host: true
-    else
-      flash[:alert] = 'Link expired'
-      redirect_to root_path
-    end
+    else 
+      forbidden
+    end  
   end
   
   def redirect_default_link

@@ -11,7 +11,7 @@ Rails.application.routes.draw do
   # Can be used by load balancers and uptime monitors to verify that the app is live.
   get "up" => "rails/health#show", as: :rails_health_check
   get "l/:slug" => "links#send_to_original_url", as: :send_to_original_url
-  post "/:slug" => "links#authenticate_private_link", as: :authenticate_private_link
+  post "l/:slug" => "links#authenticate_private_link", as: :authenticate_private_link
 
   # Defines the root path route ("/")
   # root "posts#index"

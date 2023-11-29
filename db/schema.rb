@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2023_11_28_142948) do
+ActiveRecord::Schema[7.1].define(version: 2023_11_29_185248) do
   create_table "links", force: :cascade do |t|
     t.string "name"
     t.string "slug"
@@ -22,6 +22,7 @@ ActiveRecord::Schema[7.1].define(version: 2023_11_28_142948) do
     t.string "unique_url"
     t.string "expires_at"
     t.string "password_digest"
+    t.boolean "single_use", default: false, null: false
     t.index ["slug"], name: "index_links_on_slug", unique: true
     t.index ["user_id"], name: "index_links_on_user_id"
   end
