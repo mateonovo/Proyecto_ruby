@@ -129,18 +129,7 @@ private
   # Only allow a list of trusted parameters through.
   def link_params
     if params[:link].present?
-      permitted_params = case params[:link][:link_category]
-                         when 'regular'
-                           [:url,:name, :link_category]
-                         when 'temporary'
-                           [:url,:name, :link_category, :expires_at]
-                         when 'private_link'
-                           [:url,:name, :link_category, :password]
-                         when 'ephemeral'
-                           [:url,:name, :link_category]
-                         else
-                           [:url,:name, :link_category]
-                         end
+      permitted_params =  [:url,:name, :link_category, :expires_at,:password]
       params.require(:link).permit(permitted_params)
     end
   end  

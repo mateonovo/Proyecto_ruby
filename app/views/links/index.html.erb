@@ -28,7 +28,7 @@
             <% @links.each do |link| %>
               <tr>
                 <td><%= link.url %></td>
-                <td><%= link.unique_url %></td>
+                <td><%= link.slug %></td>
                 <td><%= link.link_category %></td>
                 <td><%= link_to "Show", link, class: "btn btn-primary btn-sm" %></td>
                 <td>
