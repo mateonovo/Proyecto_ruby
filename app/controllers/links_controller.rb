@@ -12,7 +12,8 @@ class LinksController < ApplicationController
   # GET /links/1 or /links/1.json
   def show
     @link = Link.find(params[:id])
-    @short = "http://localhost:3000/#{@link.unique_url}"
+    @short = send_to_original_url_url(@link.slug) 
+   # @short = "http://localhost:3000/#{@link.unique_url}"
   end
 
   # GET /links/new
@@ -30,10 +31,8 @@ class LinksController < ApplicationController
     respond_to do |format|
       if @link.save
         format.html { redirect_to link_url(@link), notice: 'Link was successfully created.' }
-        format.json { render :show, status: :created, location: @link }
       else
         format.html { render :new, status: :unprocessable_entity }
-        format.json { render json: @link.errors, status: :unprocessable_entity }
       end
     end
   end

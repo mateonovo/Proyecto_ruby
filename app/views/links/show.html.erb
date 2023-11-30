@@ -10,7 +10,7 @@
   <div class="card mt-3">
     <div class="card-body">
       <h2 class="card-title">Share this link</h2>
-      <p class="card-text"><%= link_to @short, @short, class: "btn btn-primary" %></p>
+      <p class="card-text"><%= link_to send_to_original_url_url(@link.slug) ,send_to_original_url_url(@link.slug),  class: "btn btn-primary" %></p>
     </div>
   </div>
 

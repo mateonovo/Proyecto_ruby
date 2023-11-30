@@ -4,7 +4,6 @@ class Link < ApplicationRecord
   validates :slug, uniqueness: true
   validates :link_category, presence: true
   validates :expires_at, presence: false
-  validates :unique_url, uniqueness: true
   validates :url, format: { with: URI.regexp }
   has_secure_password validations: false
 
@@ -17,7 +16,6 @@ class Link < ApplicationRecord
   private
   def generate_slug_and_unique_url
     self.slug ||= SecureRandom.hex(1)
-    self.unique_url = "l/#{slug}"
   end
 
 
