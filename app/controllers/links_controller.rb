@@ -13,7 +13,6 @@ class LinksController < ApplicationController
   def show
     @link = Link.find(params[:id])
     @short = send_to_original_url_url(@link.slug) 
-   # @short = "http://localhost:3000/#{@link.unique_url}"
   end
 
   # GET /links/new
@@ -42,10 +41,8 @@ class LinksController < ApplicationController
     respond_to do |format|
       if @link.update(link_params)
         format.html { redirect_to link_url(@link), notice: 'Link was successfully updated.' }
-        format.json { render :show, status: :ok, location: @link }
       else
         format.html { render :edit, status: :unprocessable_entity }
-        format.json { render json: @link.errors, status: :unprocessable_entity }
       end
     end
   end
@@ -56,17 +53,12 @@ class LinksController < ApplicationController
 
     respond_to do |format|
       format.html { redirect_to links_url, notice: 'Link was successfully destroyed.' }
-      format.json { head :no_content }
     end
   end
 
 
 def send_to_original_url
   @link = Link.find_by(slug: params[:slug])
-  
-  puts ("aaaaaaaaaaaaaaaaaaaaaaaaaa , #{@link.unique_url}")
-  puts ("aaaaaaaaaaaaaaaaaaaaaaaaaa , #{params}")
-
   if @link.present?
     case @link.link_category
     when 'private_link'
@@ -97,7 +89,6 @@ end
 
 
 private
-
 
   def redirect_temporary_link
     if @link.expires_at > Time.now
@@ -132,5 +123,8 @@ private
       permitted_params =  [:url,:name, :link_category, :expires_at,:password]
       params.require(:link).permit(permitted_params)
     end
-  end  
+  end 
+  
+  
+  
 end
