@@ -39,7 +39,7 @@
         </table>
       </div>
       <div class="text-center">
-        <%= will_paginate @links, previous_label: 'Previous', next_label: 'Next', class: 'pagination' %>
+        <%= will_paginate @link, renderer: WillPaginate::ActionView::BootstrapLinkRenderer %>
       </div>
     </div>
   </div>

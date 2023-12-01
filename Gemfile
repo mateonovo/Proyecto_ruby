@@ -5,10 +5,10 @@ ruby "3.2.2"
 gem 'bootstrap', '~> 5.1.3'
 gem 'attr_encrypted'
 gem 'bcrypt', '~> 3.1.7'
-gem 'will_paginate', '~> 4.0'
+gem 'will_paginate', '~> 3.3', '>= 3.3.1'
+gem 'will_paginate-bootstrap4', '~> 0.2.2'
 
 gem 'cancancan', '~> 3.4'
-
 gem "devise", "~> 4.8.0"
 # Bundle edge Rails instead: gem "rails", github: "rails/rails", branch: "main"
 gem "rails", "~> 7.1.2"
