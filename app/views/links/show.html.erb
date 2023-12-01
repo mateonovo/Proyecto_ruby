@@ -15,9 +15,9 @@
   </div>
 
   <div class="mt-3">
-    <%= link_to "Edit this link", edit_link_path(@link), class: "btn btn-warning" %> |
+    <%= link_to "report", daily_access_count_report_links_path(@link), class: "btn btn-success btn-sm mr-1" %>
+    <%= link_to "detail", access_detail_report_links_path(@link), class: "btn btn-warning btn-sm mr-1" %>
+    <%= button_to "Destroy this link", @link, method: :delete, class: "btn btn-danger mt-3", data: { confirm: 'Are you sure?' } %>
+    <br>
     <%= link_to "Back to links", links_path, class: "btn btn-secondary" %>
-  </div>
-
-  <%= button_to "Destroy this link", @link, method: :delete, class: "btn btn-danger mt-3", data: { confirm: 'Are you sure?' } %>
 </div>

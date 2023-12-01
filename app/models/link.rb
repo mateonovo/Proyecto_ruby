@@ -1,6 +1,6 @@
 class Link < ApplicationRecord
   belongs_to :user
-  has_many :link_accesses
+  has_many :link_accesses, dependent: :destroy
   validates :name, presence: false
   validates :slug, uniqueness: true
   validates :link_category, presence: true
