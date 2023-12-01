@@ -7,9 +7,10 @@ gem 'attr_encrypted'
 gem 'bcrypt', '~> 3.1.7'
 gem 'will_paginate', '~> 3.3', '>= 3.3.1'
 gem 'will_paginate-bootstrap4', '~> 0.2.2'
-
+gem 'groupdate', '~> 6.4'
 gem 'cancancan', '~> 3.4'
 gem "devise", "~> 4.8.0"
+gem 'ransack', '~> 4.1', '>= 4.1.1'
 # Bundle edge Rails instead: gem "rails", github: "rails/rails", branch: "main"
 gem "rails", "~> 7.1.2"
 

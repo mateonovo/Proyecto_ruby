@@ -12,6 +12,8 @@ Rails.application.routes.draw do
   get "up" => "rails/health#show", as: :rails_health_check
   get "l/:slug" => "links#send_to_original_url", as: :send_to_original_url
   post "l/:slug" => "links#authenticate_private_link", as: :authenticate_private_link
+  get "links/:id/daily_access_count_report" => "links#daily_access_count_report", as: :daily_access_count_report_links
+  get "links/:id/access_detail_report" => "links#access_detail_report", as: :access_detail_report_links
 
   # Defines the root path route ("/")
   # root "posts#index"

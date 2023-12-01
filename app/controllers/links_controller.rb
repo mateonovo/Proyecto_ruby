@@ -4,6 +4,9 @@ class LinksController < ApplicationController
 
   # GET /links or /links.json
   def index
+    """
+    Listado de links paginados , usando gema will_paginate
+    """
     @links = Link.paginate(page: params[:page], per_page: 4)
   end
   
@@ -70,6 +73,7 @@ def send_to_original_url
     else
       redirect_default_link
     end
+    LinkAccess.create(link: @link, access_time: Time.now, ip_address: request.remote_ip)
   else
     flash[:alert] = 'Link not found'
     redirect_to root_path
@@ -86,6 +90,31 @@ def authenticate_private_link
     render 'send_to_url_with_password'
   end
 end
+
+
+def access_detail_report
+  """ 
+  Detalle de accesos por link usando gema ransack para filtrar
+  """
+    @link = Link.find(params[:id]) 
+    @q = @link.link_accesses.ransack(params[:q])
+    @acces = @q.result
+end
+  
+
+def daily_access_count_report
+  """ 
+  Lógica para mostrar el listado de accesos por día
+  """
+  @link = Link.find(params[:id]) 
+  if @link.link_accesses.present?
+    @access_counts_by_day = @link.link_accesses.by_day
+  else
+    @access_counts_by_day = {}
+  end
+end
+
+
 
 
 private

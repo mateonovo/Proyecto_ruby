@@ -124,6 +124,8 @@ GEM
     ffi (1.16.3-x64-mingw-ucrt)
     globalid (1.2.1)
       activesupport (>= 6.1)
+    groupdate (6.4.0)
+      activesupport (>= 6.1)
     i18n (1.14.1)
       concurrent-ruby (~> 1.0)
     importmap-rails (1.2.3)
@@ -211,6 +213,10 @@ GEM
       thor (~> 1.0, >= 1.2.2)
       zeitwerk (~> 2.6)
     rake (13.1.0)
+    ransack (4.1.1)
+      activerecord (>= 6.1.5)
+      activesupport (>= 6.1.5)
+      i18n
     rdoc (6.6.0)
       psych (>= 4.0.0)
     regexp_parser (2.8.2)
@@ -289,10 +295,12 @@ DEPENDENCIES
   capybara
   debug
   devise (~> 4.8.0)
+  groupdate (~> 6.4)
   importmap-rails
   jbuilder
   puma (>= 5.0)
   rails (~> 7.1.2)
+  ransack (~> 4.1, >= 4.1.1)
   selenium-webdriver
   sprockets-rails
   sqlite3 (~> 1.4)
