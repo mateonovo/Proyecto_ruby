@@ -16,7 +16,7 @@ class Link < ApplicationRecord
   #attr_accessor :expires_at
   private
   def generate_slug_and_unique_url
-    self.slug ||= SecureRandom.hex(1)
+    self.slug ||= SecureRandom.hex(3)
   end
   def temporary?
     link_category == 'temporary'

@@ -1,13 +1,15 @@
 class LinksController < ApplicationController
   before_action :set_link, only: %i[show edit update destroy]
+  before_action :authorize_user!, only: %i[show edit update destroy]
   before_action :authenticate_user!, except: %i[send_to_original_url authenticate_private_link]
+
 
   # GET /links or /links.json
   def index
     """
     Listado de links paginados , usando gema will_paginate
     """
-    @links = Link.paginate(page: params[:page], per_page: 4)
+    @links = current_user.links.paginate(page: params[:page], per_page: 4)
   end
   
   
@@ -73,7 +75,6 @@ def send_to_original_url
     else
       redirect_default_link
     end
-    LinkAccess.create(link: @link, access_time: Time.now, ip_address: request.remote_ip)
   else
     flash[:alert] = 'Link not found'
     redirect_to root_path
@@ -84,6 +85,7 @@ def authenticate_private_link
   @link = Link.find_by(slug: params[:slug])
 
   if @link.present? && @link.authenticate(params[:password])
+    LinkAccess.create(link: @link, access_time: Time.now, ip_address: request.remote_ip)
     redirect_to @link.url, allow_other_host: true
   else
     flash[:alert] = 'Invalid password'
@@ -119,8 +121,15 @@ end
 
 private
 
+  def authorize_user!
+    unless current_user == @link.user
+      forbidden
+    end
+  end
+
   def redirect_temporary_link
     if @link.expires_at > Time.now
+      LinkAccess.create(link: @link, access_time: Time.now, ip_address: request.remote_ip)
       redirect_to @link.url, allow_other_host: true
     else
       not_found
@@ -130,6 +139,7 @@ private
   def redirect_ephemeral_link
     if !@link.single_use?
       @link.update(single_use: true)
+      LinkAccess.create(link: @link, access_time: Time.now, ip_address: request.remote_ip)
       redirect_to @link.url, allow_other_host: true
     else
       forbidden
@@ -138,6 +148,7 @@ private
   
   
   def redirect_default_link
+    LinkAccess.create(link: @link, access_time: Time.now, ip_address: request.remote_ip)
     redirect_to @link.url, allow_other_host: true
   end
   
