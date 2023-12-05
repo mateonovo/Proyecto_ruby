@@ -17,7 +17,7 @@
 link1 = Link.create(
   name: 'Link 1',
   slug: SecureRandom.hex(3),
-  url: 'https://example.com/link1',
+  url: 'https://catedras.linti.unlp.edu.ar/login/index.php',
   user_id: user1.id,
   link_category: 'regular',
   expires_at: '',
@@ -27,7 +27,7 @@ link1 = Link.create(
 link2 = Link.create(
     name: 'Link 2',
     slug: SecureRandom.hex(3),
-    url: 'https://example.com/link1',
+    url: 'https://www.ruby-lang.org/es/documentation/',
     user_id: user2.id,
     link_category: 'regular',
     expires_at: '',
