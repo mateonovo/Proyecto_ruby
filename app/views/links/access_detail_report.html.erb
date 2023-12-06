@@ -1,25 +1,25 @@
 <div class="container mt-5">
-  <h1 class="mb-4">Detalle de los Accesos</h1>
+  <h1 class="mb-4">Access Details</h1>
 
   <%= search_form_for @q, url: access_detail_report_links_path, html: { class: 'mb-4' } do |f| %>
     <div class="row g-3">
       <div class="col-md-4">
-        <%= f.label :ip_address_cont, 'Filtrar por Dirección IP:', class: 'form-label' %>
+        <%= f.label :ip_address_cont, 'Filter by IP Address:', class: 'form-label' %>
         <%= f.search_field :ip_address_cont, class: 'form-control' %>
       </div>
 
       <div class="col-md-4">
-        <%= f.label :access_time_gteq, 'Filtrar desde fecha:', class: 'form-label' %>
+        <%= f.label :access_time_gteq, 'Filter from date:', class: 'form-label' %>
         <%= f.datetime_local_field :access_time_gteq, class: 'form-control' %>
       </div>
 
       <div class="col-md-4">
-        <%= f.label :access_time_lteq, 'Filtrar hasta fecha:', class: 'form-label' %>
+        <%= f.label :access_time_lteq, 'Filter until date:', class: 'form-label' %>
         <%= f.datetime_local_field :access_time_lteq, class: 'form-control' %>
       </div>
 
       <div class="col-12">
-        <%= f.submit 'Filtrar', class: 'btn btn-primary' %>
+        <%= f.submit 'Filter', class: 'btn btn-primary' %>
       </div>
     </div>
   <% end %>
@@ -28,9 +28,9 @@
     <table class="table table-striped mt-4">
       <thead>
         <tr>
-          <th scope="col">Fecha y Hora</th>
-          <th scope="col">Dirección IP</th>
-          <!-- Agrega otras columnas según sea necesario -->
+          <th scope="col">Date and Time</th>
+          <th scope="col">IP Address</th>
+          <!-- Add other columns as needed -->
         </tr>
       </thead>
       <tbody>
@@ -39,12 +39,12 @@
             <tr>
               <td><%= access.access_time %></td>
               <td><%= access.ip_address %></td>
-              <!-- Agrega otras columnas según sea necesario -->
+              <!-- Add other columns as needed -->
             </tr>
           <% end %>
         <% else %>
           <tr>
-            <td colspan="2">No se encontraron resultados</td>
+            <td colspan="2">No results found</td>
           </tr>
         <% end %>
       </tbody>
