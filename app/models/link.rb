@@ -6,14 +6,19 @@ class Link < ApplicationRecord
   validates :link_category, presence: true
   validates :expires_at, presence: true , if: :temporary?
   validates :password, presence: true , if: :private_link?
-  validates :url, format: { with: URI.regexp }
+  validates :url, presence: true ,format: { with: URI.regexp }
   has_secure_password validations: false
 
   enum link_category: { regular: 'regular', temporary: 'temporary', private_link: 'private_link', ephemeral: 'ephemeral' }
 
   before_validation :generate_slug_and_unique_url, on: :create
   
-  #attr_accessor :expires_at
+  
+
+  def self.update_single_use
+    update(single_use: true)
+  end  
+
   private
   def generate_slug_and_unique_url
     self.slug ||= SecureRandom.hex(3)

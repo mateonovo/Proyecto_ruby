@@ -85,7 +85,7 @@ def authenticate_private_link
   @link = Link.find_by(slug: params[:slug])
 
   if @link.present? && @link.authenticate(params[:password])
-    LinkAccess.create(link: @link, access_time: Time.now, ip_address: request.remote_ip)
+    LinkAccess.create_access(@link, current_time, request.remote_ip)
     redirect_to @link.url, allow_other_host: true
   else
     flash[:alert] = 'Invalid password'
@@ -100,7 +100,7 @@ def access_detail_report
   """
     @link = Link.find(params[:id]) 
     @q = @link.link_accesses.ransack(params[:q])
-    @acces = @q.result
+    @acces = @q.result.paginate(page: params[:page], per_page: 6)
 end
   
 
@@ -127,19 +127,26 @@ private
     end
   end
 
+  def current_time
+    DateTime.now.strftime("%Y-%m-%d %H:%M:%S")
+  end  
+
+
   def redirect_temporary_link
-    if @link.expires_at > Time.now
-      LinkAccess.create(link: @link, access_time: Time.now, ip_address: request.remote_ip)
+    expires_at = DateTime.parse(@link.expires_at).strftime("%Y-%m-%d %H:%M:%S")
+    if expires_at > current_time
+      LinkAccess.create_access(@link, current_time, request.remote_ip)
       redirect_to @link.url, allow_other_host: true
     else
       not_found
     end
   end
   
+  
   def redirect_ephemeral_link
     if !@link.single_use?
-      @link.update(single_use: true)
-      LinkAccess.create(link: @link, access_time: Time.now, ip_address: request.remote_ip)
+      Link.update_single_use
+      LinkAccess.create_access(@link, current_time, request.remote_ip)
       redirect_to @link.url, allow_other_host: true
     else
       forbidden
@@ -148,7 +155,7 @@ private
   
   
   def redirect_default_link
-    LinkAccess.create(link: @link, access_time: Time.now, ip_address: request.remote_ip)
+    LinkAccess.create_access(@link, current_time, request.remote_ip)
     redirect_to @link.url, allow_other_host: true
   end
   

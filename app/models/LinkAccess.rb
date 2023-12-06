@@ -5,6 +5,11 @@ class LinkAccess < ApplicationRecord
     def self.ransackable_attributes(auth_object = nil)
         ["access_time", "created_at", "id", "id_value", "ip_address", "link_id", "updated_at"]
       end
-    
-  end
+
+    def self.create_access(link, current_time, ip_address)
+      create(link: link, access_time: current_time, ip_address: ip_address)
+    end
+
+
+end
   
