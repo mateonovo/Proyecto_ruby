@@ -57,12 +57,10 @@
     </thead>
     <tbody>
       <% @access_counts_by_day.each do |day, count| %>
-        <% if count > 0 %>
           <tr>
             <td><%= day %></td>
             <td><%= count %></td>
           </tr>
-        <% end %>
       <% end %>
     </tbody>
   </table>

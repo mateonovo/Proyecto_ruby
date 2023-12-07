@@ -111,6 +111,7 @@ def daily_access_count_report
   @link = Link.find(params[:id]) 
   if @link.link_accesses.present?
     @access_counts_by_day = @link.link_accesses.by_day
+    @access_counts_by_day.reject! { |day, count| count.zero? }
   else
     @access_counts_by_day = {}
   end
