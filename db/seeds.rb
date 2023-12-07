@@ -54,6 +54,19 @@ link4 = Link.create(
     password: ''
   )
 
+  link4 = Link.create(
+    name: 'Link 4',
+    slug: SecureRandom.hex(3),
+    url: 'https://www.ruby-lang.org/es/documentation/',
+    user_id: user1.id,
+    link_category: 'temporary',
+    expires_at: Time.now - 1.day,
+    password: ''
+  )
+
+
+
+
 # Crear dos accesos para cada link con fechas distintas
 LinkAccess.create(link_id: link1.id, access_time: Time.now - 2.days, ip_address: '192.168.1.1')
 LinkAccess.create(link_id: link1.id, access_time: Time.now - 1.day, ip_address: '192.168.1.2')

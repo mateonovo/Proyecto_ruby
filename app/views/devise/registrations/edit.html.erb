@@ -4,7 +4,7 @@
 
       <h2>Cancel my account</h2>
 
-      <p class="mb-4">Unhappy? <%= button_to "Cancel my account", registration_path(resource_name), data: { confirm: "Are you sure?" }, method: :delete, class: 'btn btn-danger' %></p>
+      <p class="mb-4">Unhappy? <%= button_to "Cancel my account", registration_path(resource_name),onclick: "return confirm('Are you sure?');", method: :delete, class: 'btn btn-danger' %></p>
 
       <%= link_to "Back", :back, class: 'btn btn-secondary' %>
 
