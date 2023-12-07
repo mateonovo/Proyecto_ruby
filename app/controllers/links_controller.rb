@@ -134,8 +134,7 @@ private
 
 
   def redirect_temporary_link
-    expires_at = DateTime.parse(@link.expires_at).strftime("%Y-%m-%d %H:%M:%S")
-    if expires_at > current_time
+    if @link.expires_at > current_time
       LinkAccess.create_access(@link, current_time, request.remote_ip)
       redirect_to @link.url, allow_other_host: true
     else

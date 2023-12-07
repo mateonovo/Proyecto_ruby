@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2023_12_05_220554) do
+ActiveRecord::Schema[7.1].define(version: 2023_12_07_222803) do
   create_table "link_accesses", force: :cascade do |t|
     t.integer "link_id"
     t.datetime "access_time"
@@ -28,7 +28,7 @@ ActiveRecord::Schema[7.1].define(version: 2023_12_05_220554) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "link_category"
-    t.string "expires_at"
+    t.datetime "expires_at"
     t.string "password_digest"
     t.boolean "single_use", default: false, null: false
     t.index ["slug"], name: "index_links_on_slug", unique: true
