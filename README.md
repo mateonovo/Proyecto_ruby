@@ -45,5 +45,3 @@ Es un unico modelo de links , pero cada tipo de link tiene sus respectivas valid
 Se creo un modelo de accesos, para poder registrar los accesos a los links.
 
 
-
->>>>>>> development
