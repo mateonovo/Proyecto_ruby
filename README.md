@@ -10,7 +10,7 @@ Firefox/Chrome
 
 Git clone https://github.com/mateonovo/Proyecto_ruby.git
 
-## Pasos para correr la app localmente 
+## Pasos para correr la app localmente :
 
 Clonar el repositorio con el comando git clone https://github.com/mateonovo/Proyecto_ruby.git
 
@@ -18,18 +18,18 @@ Clonar el repositorio con el comando git clone https://github.com/mateonovo/Proy
 ## Dentro de la carpeta del proyecto correr los siguientes comandos:
 
 ## instalar todas las dependencias necesarias: 
--bundle install
+    bundle install
 
-## Genera la base de datos con datos de prueba 
-- `rails db:migrate` 
-- `rails db:seed`
+## Genera la base de datos con datos de prueba :
+    rails db:migrate
+    rails db:seed
 
 ## Corre el servidor local:
-    -rails s 
+    rails s 
  
 Para acceder a la aplicación hay que entrar a la siguiente url desde el navegador
 
-http://127.0.0.1:3000/
+    http://127.0.0.1:3000/
 
 En el sistema ya hay cargados varios usuarios Todos tienen contraseña: "123456" Los usuarios son los siguientes:
 
@@ -37,9 +37,10 @@ En el sistema ya hay cargados varios usuarios Todos tienen contraseña: "123456"
     user2@gmail.com
 
 ## Gemas usadas : 
-    devise: modelo de usuarios , ABM. 
-    ransack: Se uso para el filtrado de accesos en los links. will_paginate : Paginado. bootstrap: estilos.
-    groupdate: Para las estadisticas de cantidad de accesos al link por dia. Rails version = 7.1.2
+    `devise: modelo de usuarios , ABM. `
+    `ransack: Se uso para el filtrado de accesos en los links. will_paginate : Paginado. `bootstrap: estilos.
+    `groupdate: Para las estadisticas de cantidad de accesos al link por dia. 
+    `Rails version = 7.1.2`
 
 
 En el sistema ya hay cargados varios usuarios
