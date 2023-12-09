@@ -11,9 +11,11 @@
     <div class="card-body">
       <h2 class="card-title">Share this link</h2>
       <p class="card-text"><%= link_to send_to_original_url_url(@link.slug) ,send_to_original_url_url(@link.slug),  class: "btn btn-primary" %></p>
+      <% if @link.link_category == "temporary" %>
+        <p class="card-text">This link will be expired at <%= @link.expires_at %></p>
+     <% end %>  
     </div>
   </div>
-
   <div class="mt-3">
     <%= link_to "report", daily_access_count_report_links_path(@link), class: "btn btn-success btn-sm mr-1" %>
     <%= link_to "detail", access_detail_report_links_path(@link), class: "btn btn-warning btn-sm mr-1" %>

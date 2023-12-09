@@ -35,4 +35,15 @@ Los usuarios son los siguientes:
 - user1@gmail.com
 - user2@gmail.com
 
+Estrategia de diseño:
+
+Se creo un modelo de usuarios con la gema devise, para poder crear usuarios y loguearse.
+
+Se creo un modelo de links, para poder crear links y que cada usuario pueda acceder a sus links.
+Es un unico modelo de links , pero cada tipo de link tiene sus respectivas validaciones.
+
+Se creo un modelo de accesos, para poder registrar los accesos a los links.
+
+
+
 >>>>>>> development
