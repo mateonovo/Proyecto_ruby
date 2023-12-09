@@ -1,0 +1,11 @@
+<div class="container mt-4">
+  <h1 class="mb-4">Editing Link</h1>
+
+  <%= render "form", link: @link %>
+
+  <div class="mt-3">
+    <br>
+    <%= link_to "Show this link", @link, class: "btn btn-primary" %> |
+    <%= link_to "Back to links", links_path, class: "btn btn-secondary" %>
+  </div>
+</div>

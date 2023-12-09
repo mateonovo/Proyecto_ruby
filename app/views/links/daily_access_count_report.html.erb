@@ -1,0 +1,72 @@
+<!-- app/views/links/daily_access_count_report.html.erb -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Reporte de Accesos Diarios</title>
+  <!-- Bootstrap CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <style>
+    body {
+      background-color: #f8f9fa;
+    }
+
+    .container {
+      background-color: #ffffff;
+      box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+      border-radius: 15px;
+      padding: 30px;
+      margin-top: 50px;
+    }
+
+    h1 {
+      color: #007bff;
+      margin-bottom: 30px;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 20px;
+    }
+
+    th, td {
+      padding: 20px;
+      text-align: left;
+      border-bottom: 1px solid #dee2e6;
+    }
+
+    th {
+      background-color: #007bff;
+      color: #ffffff;
+    }
+  </style>
+</head>
+<body>
+
+<div class="container">
+  <h1>Daily Access Report</h1>
+  
+  <table class="table table-striped">
+    <thead>
+      <tr>
+        <th scope="col">Day</th>
+        <th scope="col">Access Count</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @access_counts_by_day.each do |day, count| %>
+          <tr>
+            <td><%= day %></td>
+            <td><%= count %></td>
+          </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>
+
+<!-- Bootstrap JS (optional, for some functionalities) -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

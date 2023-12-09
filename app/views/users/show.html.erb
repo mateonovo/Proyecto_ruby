@@ -1,0 +1,15 @@
+<div class="container mt-4">
+  <h1 class="mb-4"><%= @user.username %>'s Profile</h1>
+
+  <div class="card border-primary">
+    <div class="card-header bg-primary text-white">
+      <h5 class="mb-0">User Information</h5>
+    </div>
+    <div class="card-body">
+      <p class="card-text"><strong>Username:</strong> <%= @user.username %></p>
+      <p class="card-text"><strong>Email:</strong> <%= @user.email %></p>
+    </div>
+  </div>
+
+  <%= link_to "Delete my account", edit_user_registration_path, method: :get, class: "btn btn-danger mt-3" %>
+</div>

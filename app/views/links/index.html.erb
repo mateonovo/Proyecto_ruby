@@ -1,0 +1,51 @@
+<div class="container mt-4">
+  <% if notice.present? %>
+    <div class="alert alert-success" role="alert">
+      <%= notice %>
+    </div>
+  <% end %>
+
+  <h1 class="mb-4">Links Management</h1>
+
+  <div class="card">
+    <div class="card-header bg-primary text-white">
+      <h4 class="mb-0">Link Details</h4>
+    </div>
+
+    <div class="card-body">
+      <div class="table-responsive">
+        <table class="table table-hover">
+         <thead>
+            <tr>
+              <th>Original URL</th>
+              <th>Shortened URL</th>
+              <th>Category</th>
+              <th>Actions</th>
+            </tr>
+          </thead>
+          <tbody>
+          <% @links.each do |link| %>
+            <tr>
+              <td><%= link.url %></td>
+              <td><%= link.slug %></td>
+              <td><%= link.link_category %></td>
+              <td>
+                <%= link_to "Show", link, class: "btn btn-primary btn-sm mr-1" %>
+                <%= button_to "Destroy", link, method: :delete, class: "btn btn-danger btn-sm", onclick: "return confirm('Are you sure?');", form_class: "d-inline" %>
+                <%= link_to "Edit", edit_link_path(link), class: "btn btn-warning btn-sm mr-1" %>
+              </td>
+            </tr>
+          <% end %>
+          </tbody>
+        </table>
+      </div>
+      <div class="text-center">
+        <%= will_paginate @link, renderer: WillPaginate::ActionView::BootstrapLinkRenderer %>
+      </div>
+    </div>
+  </div>
+
+  <div class="mt-3">
+    <%= link_to "New link", new_link_path, class: "btn btn-success" %>
+  </div>
+</div>

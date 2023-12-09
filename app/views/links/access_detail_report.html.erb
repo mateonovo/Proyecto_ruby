@@ -1,0 +1,56 @@
+<div class="container mt-5">
+  <h1 class="mb-4">Access Details</h1>
+
+  <%= search_form_for @q, url: access_detail_report_links_path, html: { class: 'mb-4' } do |f| %>
+    <div class="row g-3">
+      <div class="col-md-4">
+        <%= f.label :ip_address_cont, 'Filter by IP Address:', class: 'form-label' %>
+        <%= f.search_field :ip_address_cont, class: 'form-control' %>
+      </div>
+
+      <div class="col-md-4">
+        <%= f.label :access_time_gteq, 'Filter from date:', class: 'form-label' %>
+        <%= f.datetime_local_field :access_time_gteq, class: 'form-control' %>
+      </div>
+
+      <div class="col-md-4">
+        <%= f.label :access_time_lteq, 'Filter until date:', class: 'form-label' %>
+        <%= f.datetime_local_field :access_time_lteq, class: 'form-control' %>
+      </div>
+
+      <div class="col-12">
+        <%= f.submit 'Filter', class: 'btn btn-primary' %>
+      </div>
+    </div>
+  <% end %>
+
+  <div class="table-responsive">
+    <table class="table table-striped mt-4">
+      <thead>
+        <tr>
+          <th scope="col">Date and Time</th>
+          <th scope="col">IP Address</th>
+          <!-- Add other columns as needed -->
+        </tr>
+      </thead>
+      <tbody>
+        <% if @acces.present? %>
+          <% @acces.each do |access| %>
+            <tr>
+              <td><%= access.access_time %></td>
+              <td><%= access.ip_address %></td>
+              <!-- Add other columns as needed -->
+            </tr>
+          <% end %>
+        <% else %>
+          <tr>
+            <td colspan="2">No results found</td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+  </div>
+  <div class="text-center">
+    <%= will_paginate @acces, renderer: WillPaginate::ActionView::BootstrapLinkRenderer %>
+  </div>
+</div>
