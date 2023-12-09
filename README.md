@@ -37,17 +37,13 @@ En el sistema ya hay cargados varios usuarios Todos tienen contraseña: "123456"
     user2@gmail.com
 
 ## Gemas usadas : 
-    `devise: modelo de usuarios , ABM. `
-    `ransack: Se uso para el filtrado de accesos en los links. will_paginate : Paginado. `bootstrap: estilos.
-    `groupdate: Para las estadisticas de cantidad de accesos al link por dia. 
-    `Rails version = 7.1.2`
+- `devise: modelo de usuarios , ABM.`
+- `ransack: Se uso para el filtrado de accesos en los links.`
+- `will_paginate : Paginado.` 
+- `bootstrap: estilos.`
+- `groupdate: Para las estadisticas de cantidad de accesos al link por dia. `
+- `Rails version = 7.1.2`
 
-
-En el sistema ya hay cargados varios usuarios
-Todos tienen contraseña: "123456"
-Los usuarios son los siguientes:
-- user1@gmail.com
-- user2@gmail.com
 
 ## Estrategia de diseño:
 
