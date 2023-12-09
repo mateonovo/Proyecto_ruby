@@ -17,14 +17,14 @@ Clonar el repositorio con el comando git clone https://github.com/mateonovo/Proy
 
 ## Dentro de la carpeta del proyecto correr los siguientes comandos:
 
-## instalar todas las dependencias necesarias: 
+### instalar todas las dependencias necesarias: 
     bundle install
 
-## Genera la base de datos con datos de prueba :
+### Genera la base de datos con datos de prueba :
     rails db:migrate
     rails db:seed
 
-## Corre el servidor local:
+### Corre el servidor local:
     rails s 
  
 Para acceder a la aplicación hay que entrar a la siguiente url desde el navegador
